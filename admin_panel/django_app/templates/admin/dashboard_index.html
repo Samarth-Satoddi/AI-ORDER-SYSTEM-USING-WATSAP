@@ -1,0 +1,43 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<style>
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 0 0 24px;
+  }
+  .summary-tile {
+    border: 1px solid var(--hairline-color);
+    border-radius: 6px;
+    padding: 14px 16px;
+    background: var(--body-bg);
+  }
+  .summary-label {
+    color: var(--body-quiet-color);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  .summary-value {
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+</style>
+<div class="summary-grid">
+  <div class="summary-tile">
+    <div class="summary-label">Orders Today</div>
+    <div class="summary-value">{{ orders_today_count }}</div>
+  </div>
+  <div class="summary-tile">
+    <div class="summary-label">Pending Orders</div>
+    <div class="summary-value">{{ pending_orders_count }}</div>
+  </div>
+  <div class="summary-tile">
+    <div class="summary-label">Completed Orders</div>
+    <div class="summary-value">{{ completed_orders_count }}</div>
+  </div>
+</div>
+{{ block.super }}
+{% endblock %}
